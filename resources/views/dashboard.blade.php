@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col">
             <div class="card">
-                <div class="card-header">{{ __('User Dashboard') }}</div>
+                <div class="card-header">{{ __('Dashboard admin di Nicholas') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,7 +17,8 @@
                     </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Sei attualmente loggato') }} <br><br>
+                    {{ __('Premi su projects nella barra a sinistra per visualizzare la lista dei progetti') }}
                 </div>
             </div>
         </div>

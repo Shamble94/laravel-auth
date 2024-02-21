@@ -35,7 +35,7 @@
                                 <td>{{ Str::limit($project->description, 30, "(...)") }}</td>
                                 <td>{{ $project->assigned_by}}</td>
                                 <td>
-                                    
+                                    <a href="{{ route("admin.projects.show", ["project" => $project->id])}}" class="btn btn-sm btn-square btn-primary">Vedi</a>
                                 </td>
                             </tr>
                         @endforeach  
