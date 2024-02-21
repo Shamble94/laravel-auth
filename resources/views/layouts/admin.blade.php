@@ -22,7 +22,6 @@
 <body>
     <div id="app">
         <header>
-
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div class="container">
                     <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
@@ -88,31 +87,32 @@
  
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav class="col-md-3 col-lg-2 sidebar collapse d-md-block" id="sidebarMenu">
+                <nav class="col-md-3 col-lg-2 sidebar collapse d-md-block bg-dark navbar-dark" id="sidebarMenu">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 {{ Route::currentRouteName() }}
                                 <a class="nav-link text-white {{ Route::currentRouteName() == "admin.dashboard" ? "bg-primary" : "" }}"
-                                    href=" {{ Route(admin.dashboard)}}">
+                                    href=" {{ Route("admin.dashboard") }}"> 
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
                                 {{ Route::currentRouteName() }}
                                 <a class="nav-link text-white {{ Route::currentRouteName() == "admin.projects.index" ? "bg-primary" : "" }}"
-                                    href=" {{ Route(admin.projects.index)}}">
+                                    href=" {{ Route("admin.projects.index")}}">
                                     <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>Projects
                                 </a>
                             </li>
                         </ul>
-
-                    </div>
-                </nav>
+                    </main>
+                </div>
+            </nav>
+            
+                <main class="col-md-9 col-lg-10">
+                                
+                 @yield('content')
             </div>
-            <main class="">
-    
-                @yield('content')
-            </main>
         </div>
     </div>
 </body>
