@@ -10,7 +10,7 @@
                     </div>
 
                     <div>
-                        <a href=""><button class="btn btn-primary">Add New Project</button></a>
+                        <a href=" {{ route("admin.projects.create") }}"><button class="btn btn-primary">Add New Project</button></a>
                     </div>    
                </div>
             </div>

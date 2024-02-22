@@ -13,7 +13,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,18 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => "required|max:100|unique:projects",
+            "description" => "required",
+            "assigned_by" => "required",
+        ];
+    }
+    public function messages(){
+        return [
+            "name.required" => "Il campo name è obbligatorio",
+            "name.max" => "Il campo name deve essere di massimo 100 caratteri",
+            "name.required" => "Il campo name deve essere univoco",
+            "description.required" => "Il campo descrizione è obbligatorio",
+            "assigned_by.required" => "Il campo assigned by è obbligatorio",
         ];
     }
 }
