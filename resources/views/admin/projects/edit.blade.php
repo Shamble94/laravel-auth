@@ -13,7 +13,7 @@
                 </ul>
             </div>
         @endif
-            <h2 class="text-center">Inserisci nuovo progetto</h2>
+            <h2 class="text-center">Modifica progetto</h2>
         </div>
         <div class="col-12">
             <form action="{{ route("admin.projects.store")}}" method="POST">
