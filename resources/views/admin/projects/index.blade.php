@@ -37,15 +37,18 @@
                                 <td>
                                     <a href="{{ route("admin.projects.show", ["project" => $project->id])}}" class="btn btn-sm btn-square btn-primary"><i class=" fa-solid fa-eye"></i></a>
                                     <a href="{{ route("admin.projects.edit", ["project" => $project->id])}}" class="btn btn-sm btn-square btn-warning"><i class=" fa-solid fa-edit"></i></a>
-                                    <button class="btn btn-sm btn-square btn-danger" data-bs-toggle="modal" data-bs-target="#modal_project_delete">Elimina
+                                    <button class="btn btn-sm btn-square btn-danger" data-bs-toggle="modal" 
+                                        data-bs-target="#modal_project_delete-{{ $project->id }}" 
+                                        data-projectid= "{{ $project->id }}" data-postname="{{ $project->name }}" >Elimina
                                     </button>
+                                    @include("admin.projects.modal_delete")
                                 </td>
                             </tr>
-                        @endforeach  
-                    </tbody>
-                </table>
+                            @endforeach  
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-    @include("admin.projects.modal_delete")
-@endsection
+        
+    @endsection
