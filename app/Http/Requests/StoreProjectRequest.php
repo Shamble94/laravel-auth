@@ -33,7 +33,7 @@ class StoreProjectRequest extends FormRequest
         return [
             "name.required" => "Il campo name è obbligatorio",
             "name.max" => "Il campo name deve essere di massimo 100 caratteri",
-            "name.required" => "Il campo name deve essere univoco",
+            "name.unique" => "Il campo name deve essere univoco",
             "description.required" => "Il campo descrizione è obbligatorio",
             "assigned_by.required" => "Il campo assigned by è obbligatorio",
         ];
