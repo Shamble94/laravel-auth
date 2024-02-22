@@ -16,7 +16,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::orderByDesc("id")->get();
         return view ("admin.projects.index", compact("projects"));
     }
 
@@ -41,11 +41,12 @@ class ProjectController extends Controller
         $form_data = $request->all();
 
         $project = new Project();
-        $project->name = $form_data["name"];
+
+        $project->fill($form_data);
+    
         $slug = Str::slug($project->name, "-");
         $project->slug = $slug;
-        $project->description = $form_data["description"];
-        $project->assigned_by = $form_data["assigned_by"];
+       
         $project->save();
 
         return redirect()->route("admin.projects.index");
