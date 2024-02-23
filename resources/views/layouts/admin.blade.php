@@ -93,15 +93,15 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 {{ Route::currentRouteName() }}
-                                <a class="nav-link text-white {{ Route::currentRouteName() == "dashboard" ? "bg-primary" : "" }}"
-                                    href=" {{ Route("dashboard") }}"> 
+                                <a class="nav-link text-white {{ Route::currentRouteName() == "admin.dashboard" ? "bg-primary" : "" }}"
+                                    href=" {{ Route("admin.dashboard") }}"> 
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i>Dashboard
                                 </a>
                             </li>
                             <li class="nav-item">
                                 {{ Route::currentRouteName() }}
-                                <a class="nav-link text-white {{ Route::currentRouteName() == "index" ? "bg-primary" : "" }}"
-                                    href=" {{ Route(".index")}}">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == "admin.projects.index" ? "bg-primary" : "" }}"
+                                    href=" {{ Route("admin.projects.index")}}">
                                     <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>Projects
                                 </a>
                             </li>
