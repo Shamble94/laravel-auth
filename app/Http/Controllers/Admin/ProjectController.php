@@ -7,6 +7,8 @@ use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
 {
     /**
@@ -27,6 +29,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
+        
         return view("admin.projects.create");
     }
 
@@ -41,6 +44,11 @@ class ProjectController extends Controller
         $form_data = $request->all();
 
         $project = new Project();
+
+        if($request->hasFile("cover_image")){
+            $path = Storage::disk("public")->put("project_images", $form_data["cover_image"]);
+            $form_data["cover_image"] = $path;
+        }
 
         $slug = Str::slug($form_data["name"], "-");
         $form_data["slug"] = $slug;
