@@ -93,6 +93,11 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->all();
+
+
+        $exists = Project::where("name", "LIKE", $form_data["name"])
+        ->where("id", "!=", $project->id)->get();
+        
         if($request->hasFile("cover_image")){
             if($project->cover_image != null){
                 Storage::delete($project->cover_image);
