@@ -16,7 +16,7 @@
             <h2 class="text-center">Inserisci nuovo progetto</h2>
         </div>
         <div class="col-12">
-            <form action="{{ route("admin.projects.store")}}" method="POST">
+            <form action="{{ route("admin.projects.store")}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="mt-3" for="name">Titolo</label>
@@ -29,6 +29,13 @@
                 <label class="mt-3" for="description">Descrizione</label>
                 <textarea type="text" name="description" id="description" class="form-control" placeholder="Descrizione fumetto" value="{{ old("description")}}"></textarea>
                 @error('description')
+                    <div class ="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label class="mt-3" for="cover_image">Immagine di copertina</label>
+                <input type="file" name="cover_image" id="cover_image" accept="image/*" class="form-control" placeholder="Descrizione fumetto">
+                @error('cover_image')
                     <div class ="text-danger">{{ $message }}</div>
                 @enderror
             </div>
