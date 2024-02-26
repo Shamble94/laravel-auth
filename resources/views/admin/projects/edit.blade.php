@@ -34,6 +34,21 @@
                 @enderror
             </div>
             <div class="form-group">
+                @if($project->cover_image != null)
+                <div class="my-3">
+
+                    <img src="{{ asset("/storage/" . $project->cover_image) }}" 	alt = "{{ $project->title }}" width="200">
+                </div>
+                @else
+                    <h4> Immagine non impostata </h4>
+                @endif
+                <label class="mt-3" for="cover_image">Immagine di copertina</label>
+                <input type="file" name="cover_image" id="cover_image" accept="image/*" class="form-control" placeholder="Descrizione fumetto">
+                @error('cover_image')
+                    <div class ="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
                 <label class="mt-3" for="assigned_by">Assigned by</label>
                 <textarea type="text" name="assigned_by" id="assigned_by" class="form-control" placeholder="Descrizione fumetto" > {{ old("assigned_by") ?? $project->assigned_by }}</textarea>
                 @error('assigned_by')

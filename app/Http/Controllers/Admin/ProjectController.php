@@ -93,6 +93,14 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $form_data = $request->all();
+        if($request->hasFile("cover_image")){
+            if($project->cover_image != null){
+                Storage::delete($project->cover_image);
+            }
+        $path= Storage::disk("public")->put("project_images", $form_data["cover_image"]);
+        $form_data["cover_image"] = $path;
+        
+        };
 
         $slug = Str::slug($form_data["name"], "-");
         $form_data["slug"] = $slug;
