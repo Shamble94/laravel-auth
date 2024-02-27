@@ -83,7 +83,7 @@ class ProjectController extends Controller
 
         $error_message = "";
         if(!empty(request->all())){
-            $message = $request->all();
+            $messages = $request->all();
             $error_message = $messages["error_message"];
         }
         return view ("admin.projects.edit", compact ("project"));
