@@ -78,8 +78,14 @@ class ProjectController extends Controller
      * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Project $project, Request $request)
     {
+
+        $error_message = "";
+        if(!empty(request->all())){
+            $message = $request->all();
+            $error_message = $messages["error_message"];
+        }
         return view ("admin.projects.edit", compact ("project"));
     }
 
@@ -97,6 +103,11 @@ class ProjectController extends Controller
 
         $exists = Project::where("name", "LIKE", $form_data["name"])
         ->where("id", "!=", $project->id)->get();
+        
+        if(count($exists) > 0){
+            $error_message = " Questo titolo è gia in uso";
+            return redirect()->route("admin.project.edit", compact("project", "error_message"));
+        }
         
         if($request->hasFile("cover_image")){
             if($project->cover_image != null){
